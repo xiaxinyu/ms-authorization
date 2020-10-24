@@ -39,8 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/oauth/**", "/login/**", "/logout/**")
-                .permitAll()
+                .antMatchers("/oauth/**", "/login/**", "/logout/**").permitAll()
+                .antMatchers("/books/**").hasAnyAuthority("ROLE_user", "ROLE_admin")
                 .anyRequest()
                 .authenticated()
                 .and()

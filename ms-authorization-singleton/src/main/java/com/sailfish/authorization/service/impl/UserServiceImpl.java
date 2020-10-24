@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
         if (Objects.isNull(user)) {
             throw new UsernameNotFoundException("用户名或密码错误");
         }
-        user.setAuthorities(AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
+        user.setAuthorities(AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_admin"));
         return user;
     }
 }
