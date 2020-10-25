@@ -1,0 +1,10 @@
+@startuml
+Client -> AuthorizationEndpoint: /oauth/authorize
+AuthorizationEndpoint --> Client: confirm page
+
+Client --> WhitelabelApprovalEndpoint: /oauth/confirm_access
+WhitelabelApprovalEndpoint --> Client: authorize code
+
+Alice -> TokenEndpoint: /oauth/token
+Alice <-- Bob: another authentication Response
+@enduml
