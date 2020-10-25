@@ -1,10 +1,18 @@
 @startuml
-Client -> AuthorizationEndpoint: /oauth/authorize
-AuthorizationEndpoint --> Client: confirm page
+Client -> AuthorizationEndpoint: get: /oauth/authorize
+AuthorizationEndpoint --> Client: login page
 
-Client --> WhitelabelApprovalEndpoint: /oauth/confirm_access
-WhitelabelApprovalEndpoint --> Client: authorize code
+Client --> SpringLogin: custom: /authentication/login
+SpringLogin --> AuthorizationEndpoint: get: /oauth/authorize
+AuthorizationEndpoint --> WhitelabelApprovalEndpoint: get: /oauth/confirm_access
+WhitelabelApprovalEndpoint --> Client: confirm page
 
-Alice -> TokenEndpoint: /oauth/token
-Alice <-- Bob: another authentication Response
+Client --> AuthorizationEndpoint: post: /oauth/authorize
+AuthorizationEndpoint --> Client: redirect: authorize code
+
+Client -> TokenEndpoint: post: /oauth/token
+TokenEndpoint --> Client: Response: token
 @enduml
+
+
+

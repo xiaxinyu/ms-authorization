@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //指定登录页的路径
                 .loginPage("/login")
                 //指定自定义form表单请求的路径
-                .loginProcessingUrl("/authentication/form")
+                .loginProcessingUrl("/authentication/login")
                 .failureUrl("/login_fail")
                 .defaultSuccessUrl("/login_success")
                 //必须允许所有用户访问我们的登录页（例如未验证的用户，否则验证流程就会进入死循环）
