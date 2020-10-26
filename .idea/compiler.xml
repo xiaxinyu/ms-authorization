@@ -8,10 +8,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ms-authorization-singleton" />
+        <module name="ms-authorization-jwt" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ms-authorization" target="1.8" />
+      <module name="ms-authorization-jwt" target="1.8" />
       <module name="ms-authorization-singleton" target="1.8" />
     </bytecodeTargetLevel>
   </component>

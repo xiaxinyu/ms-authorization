@@ -1,0 +1,8 @@
+@startuml
+Client -> JwtTokenFilter: header: {jwt: jwt_token}
+JwtTokenFilter --> JwtTokenFilter: extractor jwt_token
+JwtTokenFilter --> JwtTokenFilter: decode jwt_token
+JwtTokenFilter --> JwtTokenFilter: verify Authentication
+JwtTokenFilter --> Client: fail
+JwtTokenFilter --> HelloController:  success
+@enduml

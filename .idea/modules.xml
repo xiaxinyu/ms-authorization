@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ms-authorization.iml" filepath="$PROJECT_DIR$/.idea/ms-authorization.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ms-authorization-jwt/ms-authorization-jwt.iml" filepath="$PROJECT_DIR$/ms-authorization-jwt/ms-authorization-jwt.iml" />
       <module fileurl="file://$PROJECT_DIR$/ms-authorization-singleton/ms-authorization-singleton.iml" filepath="$PROJECT_DIR$/ms-authorization-singleton/ms-authorization-singleton.iml" />
     </modules>
   </component>
