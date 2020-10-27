@@ -1,0 +1,17 @@
+@startuml
+Client -> Gateway: header: {authorization: bearer jwt_token}
+
+Gateway --> OAuth: api: find user
+OAuth --> Gateway: response: authentication
+Gateway --> Gateway: jwt encode(authentication)
+Gateway --> App: send request
+App --> JwtTokenFilter: header: {jwt: jwt_token}
+JwtTokenFilter --> JwtTokenFilter: extractor jwt_token
+JwtTokenFilter --> JwtTokenFilter: decode jwt_token
+JwtTokenFilter --> JwtTokenFilter: verify Authentication
+JwtTokenFilter --> App: fail
+App --> Gateway: 403
+Gateway --> Client: 403
+JwtTokenFilter --> HelloController:  success
+HelloController-->Client: 200
+@enduml
