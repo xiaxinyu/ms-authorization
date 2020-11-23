@@ -11,10 +11,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 
-@Configuration
-@EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+public class JdbcSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     UserService userService;
@@ -26,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        //AbstractAuthenticationProcessingFilter
         auth.userDetailsService(userService);
     }
 

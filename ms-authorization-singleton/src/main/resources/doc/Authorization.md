@@ -1,8 +1,8 @@
-授权码模式：
-第一步：获取授权码
+# 授权码模式：
+## 第一步：获取授权码
 http://localhost:8762/oauth/authorize?response_type=code&client_id=admin&redirect_uri=http://www.baidu.com&scope=all&state=normal
 
-第二步：
+## 第二步：
 http://localhost:8762/oauth/token
 Basic Auth： admin/123456
 form:
@@ -12,11 +12,11 @@ form:
     redirect_uri: http://www.baidu.com
     scope: all
 
-第三步：
+## 第三步：
 http://localhost:8762/user/getCurrentUser
 Bearer Token: 497be1e0-1b04-4474-ad7f-c4b96ec6d319
 
-密码模式Bis：
+# 密码模式Basic验证：
 http://localhost:8762/oauth/token
 Basic Auth： admin/123456
 form:
@@ -24,3 +24,15 @@ form:
     username: summer
     password: 123456
     scope: all
+ 
+# 密码模式form表单：
+## 关闭basic验证
+``` java
+@Override
+public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+    oauthServer.allowFormAuthenticationForClients();
+}
+```
+
+## 请求地址
+http://localhost:8762/oauth/token?client_id=admin&client_secret=123456&grant_type=password&username=summer&password=123456

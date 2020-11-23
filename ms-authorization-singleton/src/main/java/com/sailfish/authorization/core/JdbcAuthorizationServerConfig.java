@@ -3,6 +3,7 @@ package com.sailfish.authorization.core;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -23,12 +24,14 @@ import javax.sql.DataSource;
  * @author XIAXINYU3
  * @date 2019.7.1
  */
-@Configuration
-@EnableAuthorizationServer
-public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+
+public class JdbcAuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
     DataSource dataSource;
+
+    @Autowired
+    AuthenticationManager authenticationManager;
 
     @Bean
     public TokenStore tokenStore() {
@@ -53,8 +56,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
+                .reuseRefreshTokens(false)
                 .approvalStore(approvalStore())
                 .authorizationCodeServices(authorizationCodeServices())
                 .tokenStore(tokenStore());
+
+        endpoints.authenticationManager(authenticationManager);
     }
 }
