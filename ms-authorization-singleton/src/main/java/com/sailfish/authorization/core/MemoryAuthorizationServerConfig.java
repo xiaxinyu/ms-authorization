@@ -17,8 +17,6 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
  * @author XIAXINYU3
  * @date 2019.7.1
  */
-@Configuration
-@EnableAuthorizationServer
 public class MemoryAuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
     @Autowired
     private PasswordEncoder passwordEncoder;

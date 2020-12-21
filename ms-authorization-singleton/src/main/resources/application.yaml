@@ -12,9 +12,9 @@ spring:
       enabled: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://127.0.0.1:3306/oauth2?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=UTC
-    username: root
-    password: root
+    url: jdbc:mysql://10.201.106.58:3306/iam_service?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true
+    username: steamsit
+    password: steamsit!23
     hikari:
       minimum-idle: 3
       idle-timeout: 600000
@@ -25,7 +25,7 @@ spring:
       connection-timeout: 30000
       connection-test-query: SELECT 1
   liquibase:
-    enabled: true
+    enabled: false
     change-log: classpath:/changelog/changelog-master.xml
 
 
@@ -50,3 +50,10 @@ server:
     maxHttpHeaderSize: 65536
   maxHttpHeaderSize: 65536
   maxHttpPostSize: 4194304
+
+
+logging:
+  level:
+    org:
+      springframework:
+        security: trace
