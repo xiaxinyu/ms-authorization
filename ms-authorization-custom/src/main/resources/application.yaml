@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: ms-authorization-custom
+  security:
+    user:
+      name: admin
+      password: 123456
+
+security:
+  jwt:
+    token:
+      secretKey: summer
+      expiration: 1200000
+
+server:
+  port: 8762
+  tomcat:
+    uri-encoding: UTF-8
+    maxHttpPostSize: 4194304
+    maxHttpHeaderSize: 65536
+  maxHttpHeaderSize: 65536
+  maxHttpPostSize: 4194304
+
