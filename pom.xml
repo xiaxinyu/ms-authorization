@@ -10,7 +10,8 @@
 	<modules>
 		<module>ms-authorization-singleton</module>
 		<module>ms-authorization-jwt</module>
-	</modules>
+        <module>ms-authorization-custom</module>
+    </modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
